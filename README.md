@@ -50,7 +50,7 @@ All database migration is in `db/migrations` folder.
 ### Create Migration
 
 ```Shell
-migrate create -ext sql -dir db/migrations insert_dummy_data_article
+migrate create -ext sql -dir db/migrations table_status
 ```
 
 ### Run Migration
