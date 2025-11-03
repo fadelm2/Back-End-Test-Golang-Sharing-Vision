@@ -1,0 +1,24 @@
+{
+  "app": {
+    "name": "Article Back End"
+  },
+  "web": {
+    "prefork": false,
+    "port": 8080
+  },
+  "log": {
+    "level": 6
+  },
+  "database": {
+    "username": "root",
+    "password": "fadel123",
+    "host": "localhost",
+    "port": 3307,
+    "name": "article",
+    "pool": {
+      "idle": 10,
+      "max": 100,
+      "lifetime": 300
+    }
+  }
+}
