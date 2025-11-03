@@ -18,7 +18,7 @@ func NewPostsRepository(log *logrus.Logger) *PostsRepository {
 	}
 }
 
-func (r *PostsRepository) FindAll(db *gorm.DB, request *model.SearchPostRequest) ([]entity.Post, int64, error) {
+func (r *PostsRepository) Search(db *gorm.DB, request *model.SearchPostRequest) ([]entity.Post, int64, error) {
 	var Postss []entity.Post
 	if err := db.Scopes(r.FilterPosts(request)).Offset((request.Page - 1) * request.Size).Limit(request.Size).Find(&Postss).Error; err != nil {
 		return nil, 0, err
