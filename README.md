@@ -50,13 +50,13 @@ All database migration is in `db/migrations` folder.
 ### Create Migration
 
 ```Shell
-migrate create -ext sql -dir db/migrations insert_ticket_local_link_site
+migrate create -ext sql -dir db/migrations insert_dummy_data_article
 ```
 
 ### Run Migration
 
 ```shell
-migrate -database "mysql://root:fadel2525@tcp(localhost:3306)/article?charset=utf8mb4&parseTime=True&loc=Local" -path db/migrations up
+migrate -database "mysql://root:fadel123@tcp(localhost:3307)/article?charset=utf8mb4&parseTime=True&loc=Local" -path db/migrations up
 ```
 
 ### Run Appication
