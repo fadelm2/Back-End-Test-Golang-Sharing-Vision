@@ -11,9 +11,9 @@
   },
   "database": {
     "username": "root",
-    "password": "fadel123",
+    "password": "",
     "host": "localhost",
-    "port": 3307,
+    "port": 3306,
     "name": "article",
     "pool": {
       "idle": 10,
