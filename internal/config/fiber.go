@@ -2,6 +2,7 @@ package config
 
 import (
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/spf13/viper"
 )
 
@@ -12,14 +13,14 @@ func NewFiber(config *viper.Viper) *fiber.App {
 		Prefork:      config.GetBool("web.prefork"),
 		ColorScheme:  fiber.DefaultColors,
 	})
-	//corsSettings := cors.New(cors.Config{
-	//	AllowCredentials: true,
-	//	AllowOrigins:     "",
-	//	AllowMethods:     "GET,POST,HEAD,OPTIONS,PUT,DELETE,PATCH",
-	//	AllowHeaders:     "Origin, Content-Type, Accept,  Accept-Encoding, X-CSRF-Token, Authorization,X-Requested-With",
-	//	//   ExposeHeaders:    "Origin",
-	//})
-	//app.Use(corsSettings)
+	corsSettings := cors.New(cors.Config{
+		AllowCredentials: true,
+		AllowOrigins:     "http://localhost:5173, http://localhost:8080, http://localhost:3000",
+		AllowMethods:     "GET,POST,HEAD,OPTIONS,PUT,DELETE,PATCH",
+		AllowHeaders:     "Origin, Content-Type, Accept,  Accept-Encoding, X-CSRF-Token, Authorization,X-Requested-With",
+		//   ExposeHeaders:    "Origin",
+	})
+	app.Use(corsSettings)
 
 	return app
 }

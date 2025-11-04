@@ -70,3 +70,12 @@ func (r *PostsRepository) FilterPosts(request *model.SearchPostRequest) func(tx 
 func (r *PostsRepository) UpdatePosts(db *gorm.DB, entity *entity.Post) error {
 	return db.Save(&entity).Error
 }
+
+func (r *PostsRepository) FindAll(db *gorm.DB) ([]entity.Post, error) {
+	var Post []entity.Post
+	if err := db.Scopes().Find(&Post).Error; err != nil {
+		return nil, err
+	}
+
+	return Post, nil
+}

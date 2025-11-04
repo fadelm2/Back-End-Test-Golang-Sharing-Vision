@@ -187,3 +187,30 @@ func (c *PostUseCase) Search(ctx context.Context, request *model.SearchPostReque
 
 	return responses, total, nil
 }
+func (c *PostUseCase) FindAll(ctx context.Context, request *model.AllPostRequest) ([]model.PostResponse, error) {
+	tx := c.DB.WithContext(ctx).Begin()
+	defer tx.Rollback()
+
+	if err := c.Validate.Struct(request); err != nil {
+		c.Log.WithError(err).Error("error validating request body")
+		return nil, fiber.ErrBadRequest
+	}
+
+	Post, err := c.PostRepository.FindAll(tx)
+	if err != nil {
+		c.Log.Warnf("Failed find all site : %+v", err)
+		return nil, fiber.ErrInternalServerError
+	}
+
+	if err := tx.Commit().Error; err != nil {
+		c.Log.Warnf("Failed commit transaction : %+v", err)
+		return nil, fiber.ErrInternalServerError
+	}
+
+	responses := make([]model.PostResponse, len(Post))
+	for i, localSite := range Post {
+		responses[i] = *converter.PostToResponse(&localSite)
+	}
+
+	return responses, nil
+}

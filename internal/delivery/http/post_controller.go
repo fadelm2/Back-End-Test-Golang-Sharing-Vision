@@ -116,3 +116,20 @@ func (c *PostController) Delete(ctx *fiber.Ctx) error {
 
 	return ctx.JSON(model.WebResponse[bool]{Data: true})
 }
+
+func (c *PostController) FindAllPost(ctx *fiber.Ctx) error {
+
+	request := &model.AllPostRequest{
+		ID: ctx.Query("id", ""),
+	}
+
+	responses, err := c.UseCase.FindAll(ctx.UserContext(), request)
+	if err != nil {
+		c.Log.WithError(err).Warnf("Failed to get all Article")
+		return err
+	}
+
+	return ctx.JSON(model.WebResponse[[]model.PostResponse]{
+		Data: responses,
+	})
+}

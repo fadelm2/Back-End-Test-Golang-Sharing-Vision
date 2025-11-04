@@ -33,11 +33,19 @@ type DeletePostRequest struct {
 	ID string `json:"id" validate:"required"`
 }
 type SearchPostRequest struct {
-	ID       string `json:"-" validate:"required"`
+	ID       string `json:"-" validate:""`
 	Title    string `json:"title"`
 	Content  string `json:"content"`
 	Category string `json:"category"`
 	Status   string `json:"status"`
 	Page     int    `json:"page" validate:"min=1"`
 	Size     int    `json:"size" validate:"min=1,max=100"`
+}
+
+type AllPostRequest struct {
+	ID       string `json:"-" validate:""`
+	Title    string `json:"title"`
+	Content  string `json:"content"`
+	Category string `json:"category"`
+	Status   string `json:"status"`
 }

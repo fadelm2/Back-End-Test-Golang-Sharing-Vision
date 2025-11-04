@@ -3,7 +3,7 @@ package entity
 import "time"
 
 type Post struct {
-	ID          uint      `gorm:"primaryKey;autoIncrement" json:"id"`
+	ID          int       `gorm:"primaryKey;autoIncrement" json:"id"`
 	Title       string    `gorm:"size:200" json:"title"`
 	Content     string    `gorm:"type:text" json:"content"`
 	Category    string    `gorm:"size:100" json:"category"`
