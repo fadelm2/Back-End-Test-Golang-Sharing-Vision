@@ -15,7 +15,7 @@ func NewFiber(config *viper.Viper) *fiber.App {
 	})
 	corsSettings := cors.New(cors.Config{
 		AllowCredentials: true,
-		AllowOrigins:     "http://localhost:5173, http://localhost:8080, http://localhost:3000",
+		AllowOrigins:     "http://localhost:5173, http://localhost:8080, https://test.fadelweb.site, https://testapi.fadelweb.site, http://localhost:3000",
 		AllowMethods:     "GET,POST,HEAD,OPTIONS,PUT,DELETE,PATCH",
 		AllowHeaders:     "Origin, Content-Type, Accept,  Accept-Encoding, X-CSRF-Token, Authorization,X-Requested-With",
 		//   ExposeHeaders:    "Origin",
