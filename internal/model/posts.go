@@ -19,8 +19,8 @@ type CreatePostRequest struct {
 
 type UpdatePostRequest struct {
 	ID       string `json:"-" validate:"required"`
-	Title    string `json:"title" validate:"required"`
-	Content  string `json:"content" validate:"required"`
+	Title    string `json:"title" validate:"min=20"`
+	Content  string `json:"content" validate:"min=200"`
 	Category string `json:"category"`
 	Status   string `json:"status" validate:"required,oneof=publish draft trash"`
 }
